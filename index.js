@@ -4,8 +4,9 @@
  ********************************************/
 var isGenerator, generatorConstructor;
 try {
-    if (typeof GeneratorConstructor === 'function') {
-        generatorConstructor = GeneratorConstructor;
+    //if GeneratorFunction is implemented globally
+    if (typeof GeneratorFunction === 'function') {
+        generatorConstructor = GeneratorFunction;
     } else {
         //Don't use eval.
         generatorConstructor = new Function("return (function* (){}).constructor")();

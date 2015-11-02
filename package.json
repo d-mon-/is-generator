@@ -1,8 +1,9 @@
 {
   "name": "is-generator",
   "version": "1.0.0",
-  "description": "test if value is ES6 generator",
+  "description": "test if value is a ES6 generator",
   "main": "index.js",
+  "files":["index.js"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
