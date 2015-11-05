@@ -8,13 +8,13 @@
  
  - It only checks **[ES6]** generators & **[ES6]** generator functions
  
+ - The module doesn't throw a SyntaxError when it is loaded in older browsers/servers thanks to `new Function()`
+ 
 ### `{value}` is GeneratorFunction 
 
 The function tests if your `{value}` is an instance of **function* (){}** constructor.
 
 If the code is executed inside a navigator and **instanceof** failed, the function will check if the argument begins with `function*` to deal with value from another frame. 
-
-Furthermore, the module doesn't throw a SyntaxError when loaded in older browsers thanks to `new Function()`
 
 ```js
 var isGeneratorFunction = require('is-generator-es6').isGeneratorFunction;
