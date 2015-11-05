@@ -1,6 +1,6 @@
-#IS-GENERATOR-ES6
+# IS-GENERATOR-ES6
 
-##Test if your value is a ES6:Generator or ES6:GeneratorFunction
+## Test if your value is a ES6:Generator or ES6:GeneratorFunction
 
  - It doesn't use fn.name
  
@@ -29,7 +29,7 @@ var isGenerator = require('is-generator-es6');
 isGenerator((function* (){})()) //returns true
 ```
 
-### `{value}` is Generator n°2
+### `{value}` is Generator n&deg;2
 
 Checks if `value.__proto__.__proto__` is equal to `(function*(){}).prototype.__proto__` after checking the presence of `next` and `throw`.
 
