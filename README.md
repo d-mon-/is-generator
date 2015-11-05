@@ -1,5 +1,4 @@
 # IS-GENERATOR-ES6
-
 ## Test if your value is a ES6:Generator or ES6:GeneratorFunction
 
  - It doesn't use fn.name
