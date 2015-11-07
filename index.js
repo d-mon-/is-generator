@@ -10,17 +10,18 @@ var isBrowser = typeof window === "object",
     generatorFunctionPrototype;
 
 try {
-    //initialize generatorFunctionConstructor
+
+    //Initialize generatorFunctionConstructor
     //Never use eval -> decrease perf.
-    var generatorFunction = new Function("return (function* (){})")();
+    var generatorFunction = new Function( "return (function* (){})" )();
     generatorFunctionConstructor = generatorFunction.constructor;
 
-    if (typeof generatorFunctionConstructor === "function") {
+    if ( typeof generatorFunctionConstructor === "function" ) {
 
-        //initialize generatorFunctionPrototype
-        if (typeof generatorFunction.prototype === "object" && typeof generatorFunction.prototype.__proto__ === "object") {
+        //Initialize generatorFunctionPrototype
+        if ( typeof generatorFunction.prototype === "object" && typeof generatorFunction.prototype.__proto__ === "object" ) {
             generatorFunctionPrototype = generatorFunction.prototype.__proto__;
-            if (generatorFunctionPrototype.hasOwnProperty("next") === false || generatorFunctionPrototype.hasOwnProperty("throw") === false) {
+            if ( generatorFunctionPrototype.hasOwnProperty( "next" ) === false || generatorFunctionPrototype.hasOwnProperty( "throw" ) === false ) {
                 generatorFunctionPrototype = null;
             }
         }
@@ -29,12 +30,10 @@ try {
         generatorFunctionPrototype = null;
     }
 
-
-} catch (err) {
+} catch ( err ) {
     generatorFunctionConstructor = noop;
     generatorFunctionPrototype = null;
 }
-
 
 function noop() {
 }
@@ -44,16 +43,16 @@ function noop() {
  * @param {*} value
  * @returns {boolean} Returns if value is a GeneratorFunction
  */
-function isGeneratorFunction(value) {
+function isGeneratorFunction( value ) {
 
-    if (value instanceof generatorFunctionConstructor) {
+    if ( value instanceof generatorFunctionConstructor ) {
         return true;
 
-    } else if (isBrowser === true) {
+    } else if ( isBrowser === true ) {
 
-        //handle values from another frame: checks the presence of next & throw, then checks if the function start with "function*"
-        if (typeof value === "function" && typeof value.prototype === "object" && "next" in value.prototype && "throw" in value.prototype) {
-            return /^function\*/.test(functionToString.call(value));
+        //Handle values from another frame: checks the presence of next & throw, then checks if the function start with "function*"
+        if ( typeof value === "function" && typeof value.prototype === "object" && "next" in value.prototype && "throw" in value.prototype ) {
+            return /^function\*/.test( functionToString.call( value ) );
         }
     }
     return false;
@@ -64,10 +63,10 @@ function isGeneratorFunction(value) {
  * @param {*} value
  * @returns {boolean} Returns if value is a Generator
  */
-function isGenerator(value) {
+function isGenerator( value ) {
 
-    if (typeof value === "object" && "throw" in value && "next" in value) {
-        return objectToString.call(value) === "[object Generator]";
+    if ( typeof value === "object" && "throw" in value && "next" in value ) {
+        return objectToString.call( value ) === "[object Generator]";
     }
     return false;
 }
@@ -77,23 +76,23 @@ function isGenerator(value) {
  * @param {*} value
  * @returns {boolean} Returns if value is a Generator
  */
-function _isGenerator(value) {
+function _isGenerator( value ) {
 
     //Shortcut if the prototype of function* couldn't be found
-    if (generatorFunctionPrototype === null) {
-        return isGenerator(value);
+    if ( generatorFunctionPrototype === null ) {
+        return isGenerator( value );
     }
 
     //Checks the presence of "throw" and "next" in the object
-    if (typeof value === "object" && "throw" in value && "next" in value) {
+    if ( typeof value === "object" && "throw" in value && "next" in value ) {
 
-        //retrieve the second prototype in the chain and compare it
-        if (typeof value.__proto__ === "object" && value.__proto__.__proto__ === generatorFunctionPrototype) {
-            return true
+        //Retrieve the second prototype in the chain and compare it
+        if ( typeof value.__proto__ === "object" && value.__proto__.__proto__ === generatorFunctionPrototype ) {
+            return true;
         }
 
-        if (isBrowser === true) {
-            return objectToString.call(value) === "[object Generator]";
+        if ( isBrowser === true ) {
+            return objectToString.call( value ) === "[object Generator]";
         }
     }
     return false;

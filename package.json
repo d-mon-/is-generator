@@ -7,7 +7,8 @@
     "index.js"
   ],
   "scripts": {
-    "test": "tape test/isGenerator-spec.js && tape test/_isGenerator-spec.js && tape test/isGeneratorFunction-spec.js"
+    "test": "tape test/isGenerator-spec.js && tape test/_isGenerator-spec.js && tape test/isGeneratorFunction-spec.js",
+    "jscs":"jscs --fix index.js test/isGenerator-spec.js"
   },
   "keywords": [
     "generator",
