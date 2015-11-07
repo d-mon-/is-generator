@@ -53,7 +53,7 @@ function isGeneratorFunction(value) {
 }
 
 /**
- * Test if the value is a ES6:Generator after checking the presence of next and throw by calling object.prototype.toString
+ * Test if the value is a ES6:Generator after checking the presence of next and throw by callinsg object.prototype.toString
  * @param {*} value
  * @returns {boolean} Returns if value is a Generator
  */
@@ -70,13 +70,13 @@ function isGenerator(value) {
  * @returns {boolean} Returns if value is a Generator
  */
 function _isGenerator(value) {
-    //Shortcut if the prototype couldn't be found
+    //Shortcut if the prototype of function* couldn't be found
     if (generatorFunctionPrototype === null) {
-        return objectToString.call(value) === "[object Generator]";
+        return isGenerator(value);
     }
-    //Checks the presence of throw and next in the object
+    //Checks the presence of "throw" and "next" in the object
     if (typeof value === "object" && "throw" in value && "next" in value) {
-        //retrieve the second prototype and compare it
+        //retrieve the second prototype in the chain and compare it
         if (typeof value.__proto__ === "object" && value.__proto__.__proto__ === generatorFunctionPrototype) {
             return true
         }

@@ -1,6 +1,6 @@
 {
   "name": "is-generator-es6",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Test if your value is a ES6:Generator or ES6:GeneratorFunction",
   "main": "index.js",
   "files": [

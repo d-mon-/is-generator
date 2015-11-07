@@ -1,5 +1,5 @@
 # IS-GENERATOR-ES6
-## Test if your value is a ES6:Generator or ES6:GeneratorFunction
+## Checks ES6:Generator or ES6:GeneratorFunction
 
  - It doesn't use fn.name
  
@@ -11,9 +11,9 @@
  
 ### `{value}` is GeneratorFunction 
 
-The function tests if your `{value}` is an instance of **function* (){}** constructor.
+The function tests if your `{value}` is an instance of **function\* (){}** constructor.
 
-If the code is executed inside a navigator and **instanceof** failed, the function will check if the argument begins with `function*` to deal with value from another frame. 
+If the code is executed inside a navigator and **instanceof** failed, the function will check if the argument begins with `function\*` to deal with value from another frame. 
 
 ```js
 var isGeneratorFunction = require('is-generator-es6').isGeneratorFunction;
