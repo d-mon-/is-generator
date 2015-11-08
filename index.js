@@ -83,15 +83,15 @@ function _isGenerator( value ) {
         return isGenerator( value );
     }
 
-    //Checks the presence of "throw" and "next" in the object
-    if ( typeof value === "object" && "throw" in value && "next" in value ) {
+    if ( typeof value === "object" ) {
 
         //Retrieve the second prototype in the chain and compare it
         if ( typeof value.__proto__ === "object" && value.__proto__.__proto__ === generatorFunctionPrototype ) {
             return true;
         }
 
-        if ( isBrowser === true ) {
+        //Checks the presence of "throw" and "next" in the object
+        if ( isBrowser === true  && "throw" in value && "next" in value ) {
             return objectToString.call( value ) === "[object Generator]";
         }
     }
